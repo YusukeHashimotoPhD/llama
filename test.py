@@ -4,11 +4,6 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 tokenizer = AutoTokenizer.from_pretrained("rinna/bilingual-gpt-neox-4b-instruction-sft", use_fast=False)
 model = AutoModelForCausalLM.from_pretrained("rinna/bilingual-gpt-neox-4b-instruction-sft")
 
-# Save the model and the tokenizer.
-dir_name = './rinna'
-tokenizer.save_pretrained(dir_name)
-model.save_pretrained(dir_name)
-
 if torch.cuda.is_available():
     model = model.to("cuda")
 
