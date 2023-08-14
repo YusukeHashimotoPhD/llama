@@ -2,31 +2,15 @@ import b_call_Llama
 import b_talk_Llama
 
 
-def main(prompt):
+def main(model_name, prompt):
     # model = "./Llama-2-13b-hf"
-    model = "./Llama-2-70b-chat-hf"
+    model = f"./model/{model_name}"
     pipeline, tokenizer = b_call_Llama.main(model)
     use_template = False
     return b_talk_Llama.main(pipeline, tokenizer, prompt, use_template)
 
 
 if __name__ == '__main__':
-    # prompt = '''
-    # By the following sentence, extract 5 keywords and give them separated by comma in Japanese.
-    # Only the results are given.
-    # Your comment is not welcome.
-    #
-    # 以下は、八洲環境技術振興財団の2023年度研究開発・調査助成に該当する研究者の研究キーワードです。
-    #
-    # 1. 再生可能エネルギー源
-    # 2. クリーン燃料
-    # 3. エネルギー効率化
-    # 4. エネルギー材料
-    # 5. 環境保全
-    #
-    # '''
-
-
     preprompt = """
 <<SYS>>
 あなたは、とても親切で有能なアシスタントです。
@@ -39,15 +23,6 @@ if __name__ == '__main__':
 <</SYS>>
 
 """
-
-#     preprompt = '''
-# <<SYS>>
-# You are an assistant for scientific research.
-# By the following sentence, extract 5 keywords and give them separated by comma in Japanese.
-# The output is only the extracted keywords.
-# No comment is allowed.
-# <</SYS>>
-# '''
 
     analyze_data = '''
 公募機関名: 八洲環境技術振興財団
@@ -66,5 +41,7 @@ if __name__ == '__main__':
 
     prompt = preprompt + f'[INST] {analyze_data} [/INST]'
 
-    results = main(prompt)
+    model_name = 'Llama-2-70b-chat-hf'
+
+    results = main(model_name, prompt)
     print(results[0])

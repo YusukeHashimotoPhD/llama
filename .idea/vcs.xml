@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Llama-2-13b-chat-hf" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Llama-2-13b-hf" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Llama-2-70b-chat-hf" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Llama-2-7b-chat-hf" vcs="Git" />
   </component>
 </project>
