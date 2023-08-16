@@ -28,6 +28,7 @@ def call_llama(llama_model, prompt, temperature, top_p):
 
 
 def servey_model(model, prompt):
+    results = []
     for temperature in np.arange(0.1, 1.0, 0.1):
         for top_p in np.arange(0.1, 1.0, 0.1):
             try:
@@ -89,3 +90,6 @@ if __name__ == '__main__':
 
     model_name = 'llama2-22b-daydreamer-v2.ggmlv3.q6_K.bin'
     model = Llama(model_path=f'./model/{model_name}')
+    prompt = '1+2='
+    result = servey_model(model, prompt)
+    print(result)

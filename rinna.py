@@ -17,13 +17,13 @@ def main(prompt, temperature, top_p):
     with torch.no_grad():
         output_ids = model.generate(
             token_ids.to(model.device),
-            max_new_tokens=512,
             do_sample=True,
             temperature=temperature,
             top_p=top_p,
             pad_token_id=tokenizer.pad_token_id,
             bos_token_id=tokenizer.bos_token_id,
-            eos_token_id=tokenizer.eos_token_id
+            eos_token_id=tokenizer.eos_token_id,
+            echo=False
         )
 
     output = tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])

@@ -28,10 +28,10 @@ def main(prompt, temperature, top_p):
 
     tokens = model.generate(
         input_ids.to(device=model.device),
-        max_new_tokens=128,
         temperature=temperature,
         top_p=top_p,
         do_sample=True,
+        # echo=False
     )
 
     out = tokenizer.decode(tokens[0], skip_special_tokens=False)
